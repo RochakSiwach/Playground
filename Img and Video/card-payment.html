@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Card Payment - Cricket Store</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      align-items: center;
+    }
+
+    #payment-container {
+      background: white;
+      max-width: 450px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #payment-container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #232f3e;
+      font-size: 1.8em;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 30px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    ul li {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1em;
+      color: #232f3e;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    form label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+      color: #232f3e;
+      font-size: 1.1em;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    form input:focus {
+      border-color: #ff9900;
+      outline: none;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #232f3e;
+      color: white;
+      padding: 15px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #37475a;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #total {
+      font-weight: bold;
+      text-align: right;
+      margin-bottom: 30px;
+      color: #e44d26;
+      font-size: 1.2em;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: green;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #232f3e;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      color: #ff9900;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="payment-container">
+    <h1>Card Payment</h1>
+    <ul id="cart-summary"></ul>
+    <p id="total"></p>
+
+    <form id="card-form">
+      <label for="card-number">Card Number</label>
+      <input id="card-number" type="text" maxlength="16" pattern="\d{16}" required placeholder="1234 5678 9012 3456"
+        inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+
+      <label for="expiry-date">Expiry Date (MM/YY)</label>
+      <input id="expiry-date" type="text" maxlength="5" pattern="(0[1-9]|1[0-2])\/\d{2}" required
+        placeholder="MM/YY" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9\/]/g, '')" />
+
+      <label for="cvv">CVV</label>
+      <input id="cvv" type="text" maxlength="3" pattern="\d{3}" required placeholder="123" inputmode="numeric"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+
+      <button type="submit">Pay Now</button>
+    </form>
+
+    <p id="message"></p>
+    <a href="index.html" class="back-btn">Back to Store</a>
+  </div>
+
+  <script>
+    // Load cart and payment method from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const paymentMethod = localStorage.getItem('paymentMethod');
+
+    const cartSummary = document.getElementById('cart-summary');
+    const totalEl = document.getElementById('total');
+    const messageEl = document.getElementById('message');
+    const cardForm = document.getElementById('card-form');
+
+    // Redirect to store if no cart or payment method is not card
+    if (!cart.length || paymentMethod !== 'credit_card' && paymentMethod !== 'debit_card') {
+      alert('No card payment in progress. Redirecting to store.');
+      window.location.href = 'index.html'; // change as per your store homepage
+    }
+
+    // Display cart summary and total
+    let total = 0;
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x ${item.quantity}`;
+      const priceSpan = document.createElement('span');
+      priceSpan.textContent = `₹${item.price * item.quantity}`;
+      li.appendChild(priceSpan);
+      cartSummary.appendChild(li);
+    });
+    totalEl.textContent = `Total Amount: ₹${total}`;
+
+    // Validate and handle form submission
+    cardForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Basic validation via patterns is handled by HTML, but we can add extra checks if needed
+      // Here, just simulate success payment after validation
+
+      messageEl.textContent = "Processing payment...";
+      cardForm.querySelector('button').disabled = true;
+
+      setTimeout(() => {
+        messageEl.textContent = "✅ Payment successful! Thank you for your purchase.";
+        localStorage.removeItem('cart');
+        localStorage.removeItem('paymentMethod');
+        cardForm.reset();
+        cardForm.querySelector('button').disabled = false;
+
+        // Optionally, redirect to store or order confirmation page after delay
+        setTimeout(() => {
+          window.location.href = 'index.html'; // redirect to store homepage
+        }, 3000);
+      }, 2000);
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Playground</title>
+  <link rel="icon" type="image/x-icon" href="rb_logo.png">
+  <link rel="stylesheet" href="Playground.css"/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #3d3a3a; 
+      color: #1a1a1a; 
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="light">
+  <nav class="navi">
+    <span class="logomaking">
+      <img src="" alt="Playground" />
+        <a onclick="showPage('home-page')">      
+        <h2>Playground</h2></a>
+      
+
+    </span>
+    <div class="nav-links">
+      <ul>
+        <li><a onclick="showPage('home-page')">Home</a></li>
+        <li><a onclick="showPage('events-page')">Events</a></li>
+        <li><a onclick="showPage('leaderboard-page')">LeaderBoard</a></li>
+        <li><a onclick="showPage('store-page')">Store</a></li>
+        <li><a onclick="showPage('login-register-page')">Login/Register</a></li>
+      </ul>
+    </div>
+
+    <!--Notifications pannel-->
+<div class="notification-area">
+  <div class="notification-icon" onclick="toggleNotifications()">
+    <i class="fas fa-bell"></i>
+    <span id="notificationBadge" class="notification-badge">0</span>
+  </div>
+  <div class="notification-box" id="notificationBox">
+    <div class="notification-header">
+      <h4>Notifications</h4>
+      <span class="close-btn" onclick="toggleNotifications()">&times;</span>
+    </div>
+    <ul id="notificationList">
+      <li>No notifications yet.</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+  </nav>
+
+    <div id="home-page" class="main-content page-section active">
+
+
+
+      <div class="scroll-container">
+        <section class="backgroundporition">
+          <video class="background-video" autoplay loop muted>
+            <source src="Img and Video/cricketvideo.mp4" type="video/mp4">
+          </video>
+        </section>
+
+        <section class="hero">
+          <h1 class="hero-heading">Welcome to Playground:</h1>
+          <h3 class="hero-subheading">“Playground Where Legends Rise”</h3>
+          <p class="typed-text">Your ultimate destination for tracking player stats, achievements, and rankings.</p>
+          <button class="primary-button"><a onclick="showPage('leaderboard-page')">Explore Players</a></button>
+        </section>
+      </div>
+      
+      
+      <div class="info-columns">
+        <section id="about-us">
+            <h3>About Us</h3>
+            <p>Playground is India's first televised cricket-based reality show, followed by an international league, that discovers raw talent from India's heartlands, offering equal opportunities to all, regardless of caste, class, or background.
+              More than a game, Playground blends cricket with culture, nurturing talent through yoga, meditation, and Indian values — uniting Bharat through its roots and proving that we are our own destiny-makers!</p>
+        </section> <br> <br> 
+
+        
+        
+      <div class="ourtrials">  
+        <section id="trails">
+            <h3>Our Trails</h3>
+            <p>Discover a variety of exciting trails perfect for all levels, from beginners to seasoned runners. Explore scenic routes and challenge yourself in new environments.</p>
+        </section> <br> <br>
+      </div>
+
+        <section id="home-login-register-section">
+            <h3>Join Our Community</h3>
+            <p>Become a part of Playground family! Register or log in to track your progress, participate in events, and connect with other enthusiasts.</p>
+            <button onclick="showPage('login-register-page')" id="bus">Login / Register</button>
+        </section> <br> <br> 
+        
+        <div class="match">
+          <section id="gallery">
+            <h2>Match Day Highlights</h2>
+                <div class="photos">
+                  <marquee behavior="70" direction="left">
+                    <img src="Img and Video/pro1.jpg" alt="Team Celebration"  width="200px" height="150px" />
+                    <img src="Img and Video/victory.jpeg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m1.jpg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m2.webp" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m3.jpg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m4.jpg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/pro1.jpg" alt="Team Celebration"  width="200px" height="150px" />
+                    <img src="Img and Video/victory.jpeg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m1.jpg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m2.webp" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m3.jpg" alt="Victory Moment" width="200px" height="150px" />
+                    <img src="Img and Video/m4.jpg" alt="Victory Moment" width="200px" height="150px" />
+
+
+                  </marquee>
+                </div>
+          </section>
+        </div>
+
+        <section id="blog">
+            <h2>Insights & Tips</h2>
+
+           <article>
+              <h3>Top 5 Fitness Routines for Cricket Players</h3>
+              <p>Stay fit and agile with these expert-backed exercises for all-round performance:</p>
+              <ul class="fitness-tips">
+                <li>🏋️‍♂️ Strength Training: Focus on core, legs, and shoulders.</li>
+                <li>🏃‍♂️ Sprint Drills: Improve running between wickets and fielding speed.</li>
+                <li>🧘‍♂️ Flexibility Exercises: Use yoga and stretching to prevent injuries.</li>
+                <li>💓 Endurance Runs: Build stamina with interval and long-distance running.</li>
+                <li>🧠 Mental Focus: Practice mindfulness or visualization before matches.</li>
+              </ul>
+          </article>
+        </section> 
+
+    </div>
+    </div>
+
+    
+
+
+
+
+    
+    <!-- Events Page Content -->
+    <div id="events-page" class="page-section event-section">
+        <nav id="eventNavbar">
+            <a onclick="showPage('home-page')">Home</a>
+            <span id="eventUserRoleLabel"></span>
+            <a onclick="showEventSection('eventPanel')">Event Panel</a>
+            <a onclick="showEventSection('trialSection')">Trial Section</a>
+            <a onclick="showEventSection('newsSection')">News Updates</a>
+        </nav>
+
+        <section id="eventPanel" class="panel hidden">
+            <h2>Event Panel</h2>
+            <div id="coachForm" class="hidden">
+                <h3>Post New Event (Coach Only)</h3>
+                <input type="text" id="eventTitle" placeholder="Event Title" />
+                <input type="text" id="eventDetails" placeholder="Details" />
+                <button onclick="postEvent()">Post Event</button>
+            </div>
+            <div id="events">
+                <h3>All Events</h3>
+                <ul id="eventList"></ul>
+            </div>
+        </section>
+
+        <section id="trialSection" class="trial hidden">
+            <h2>Book a Trial</h2>
+            <input type="text" id="studentName" placeholder="Your Name" />
+            <select id="eventSelect">
+                <option disabled selected>Select an Event</option>
+            </select>
+            <button onclick="bookTrial()">Book Trial</button>
+            <ul id="trialList"></ul>
+        </section>
+
+        <section id="newsSection" class="news hidden">
+            <h2>News & Updates</h2>
+            <input type="text" id="searchEmail" placeholder="Enter your email" />
+            <button onclick="showUpdates()">Get My Updates</button>
+            <div id="userUpdates"></div>
+        </section>
+    </div>
+
+    <!-- Store Page Content -->
+   <div id="store-page" class="page-section store-section" style="margin-top: 20px;">
+    <header>
+      <h1>Cricket Store</h1>
+      <input type="text" placeholder="Search products..." class="search-box" />
+      <button class="cart-button">
+        🛒 Cart (<span id="cart-count">0</span>)
+      </button>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <main id="products">
+      <section class="product">
+  <img src="Img and Video/kit.jpeg" alt="Cricket Kit" />
+  <div class="product-content">
+    <h2>Cricket Kit (Full Set)</h2>
+    <p>All-in-one cricket gear including bat, pads, gloves, helmet, and bag.</p>
+    <p class="price">₹19990</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/bat.jpeg" alt="Normal Bat (Willow)" />
+  <div class="product-content">
+    <h2>Bat (Willow)</h2>
+    <p>Durable English willow bat ideal for competitive play.</p>
+    <p class="price">₹80</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>    
+
+<section class="product">
+  <img src="Img and Video/tb.jpeg" alt="Normal Ball" />
+  <div class="product-content">
+    <h2>Normal Ball</h2>
+    <p>Standard tennis-style cricket ball suitable for practice games.</p>
+    <p class="price">₹150</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img id="Img and Video/imagessetting" src="ball.jpeg" alt="Leather Ball" />
+  <div class="product-content">
+    <h2>Leather Ball</h2>
+    <p>High-grade red leather ball for professional matches and net sessions.</p>
+    <p class="price">₹860</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img id="Img and Video/imagessetting"  src="helmet.jpeg" alt="Cricket Helmet" />
+  <div class="product-content">
+    <h2>Cricket Helmet</h2>
+    <p>Protective helmet with steel grill and air vents for maximum safety.</p>
+    <p class="price">₹55</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/p.jpeg" alt="Batting Pads" />
+  <div class="product-content">
+    <h2>Batting Pads</h2>
+    <p>Lightweight yet strong pads to guard legs against fast deliveries.</p>
+    <p class="price">₹300</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/wicket.jpeg" alt="Wickets Set" />
+  <div class="product-content">
+    <h2>Wickets Set</h2>
+    <p>Set of 3 wooden stumps with 2 durable bails for field setup.</p>
+    <p class="price">₹175</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/ag.jpeg" alt="Abdominal Guard" />
+  <div class="product-content">
+    <h2>Abdominal Guard</h2>
+    <p>Essential protective gear for groin safety during matches.</p>
+    <p class="price">₹250</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/gloves.jpeg" alt="Gloves" />
+  <div class="product-content">
+    <h2>Gloves</h2>
+    <p>Grip-enhancing gloves with extra padding for batting comfort.</p>
+    <p class="price">₹170</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/chest.jpeg" alt="Chestguard" />
+  <div class="product-content">
+    <h2>Chestguard</h2>
+    <p>Body protector designed to absorb shocks from high-speed balls.</p>
+    <p class="price">₹150</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<section class="product">
+  <img src="Img and Video/bag.jpeg" alt="Cricket Bag" />
+  <div class="product-content">
+    <h2>Cricket Bag</h2>
+    <p>Spacious and durable bag with wheels to carry all your gear.</p>
+    <p class="price">₹350</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+    </main>
+ 
+    <section id="dynamic-contact"></section>
+ 
+    <div id="cart-modal">
+      <h3>Your Cart</h3>
+      <ul id="cart-items"></ul>
+      <div id="cart-total">Total: ₹0</div>
+
+      <h4>Payment Method</h4>
+      <select id="payment-method">
+        <option value="credit_card">Credit Card</option>
+        <option value="debit_card">Debit Card</option>
+        <option value="upi">UPI</option>
+        <option value="net_banking">Net Banking</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <button id="checkout-btn">Proceed to Pay</button>
+      <button id="close-cart-btn">Close</button>
+    </div>
+
+    <footer>
+      <div id="contact-us">
+      <p>&copy; 2025 Cricket Store | All Rights Reserved</p></div>
+    </footer>
+    </div>
+
+
+
+    <!-- Leaderboard Page Content -->
+    <div id="leaderboard-page" class="page-section leaderboard-section">
+        <div class="leaderboard-container">
+  <h1><i class="fas fa-trophy"></i> Cricket League Leaderboard</h1>
+  <p class="subtext">Real-time updates!</p>
+
+  <div class="leaderboard-tabs">
+    <button class="tab-button active" data-category="overall">Overall</button>
+    <button class="tab-button" data-category="batsman">Batsman</button>
+    <button class="tab-button" data-category="bowler">Bowler</button>
+    <button class="tab-button" data-category="mostRuns">Most Runs</button>
+    <button class="tab-button" data-category="mostWickets">Most Wickets</button>
+    <button class="tab-button" data-category="mostCenturies">Most Centuries</button>
+    <button class="tab-button" data-category="wicketkeeper">Wicket keeper</button>
+    <button class="tab-button" data-category="teams">Teams</button>
+  </div>
+
+  <div class="filter-section">
+    <label for="stateFilter">Select State:</label>
+    <select id="stateFilter"></select>
+  </div>
+
+  <div id="leaderboard-content"></div>
+
+  <div class="update-info">
+    Last Updated: <span id="lastUpdated"></span> | Next Update: <span id="nextUpdate"></span> seconds
+  </div>
+</div>
+    </div>
+
+
+
+    <!--Login page content-->
+     <div id="login-register-page" class="page-section login-register-section">
+          <div class="wrapper">
+        <div class="form-box">
+            <div class="tabs">
+                <!-- Login tab button -->
+                <button class="tab active" onclick="switchTab('login')">Login</button>
+                <!-- Sign Up tab button -->
+                <button class="tab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form Section -->
+            <form id="loginForm" class="form active" onsubmit="return handleLogin(event)">
+                <h2>Login</h2>
+                <div class="input-box">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <!-- Conditional ID field for Coach/Admin login -->
+                <div id="loginIdField" class="input-box hidden-field">
+                    <input type="text" id="loginUserId" placeholder="User ID">
+                </div>
+                <div class="role-selector">
+                    <label>
+                        <input type="radio" name="loginRole" value="student" checked onchange="toggleLoginIdField()">
+                        <span>Student</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="loginRole" value="coach" onchange="toggleLoginIdField()">
+                        <span>Coach</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="loginRole" value="admin" onchange="toggleLoginIdField()">
+                        <span>Admin</span>
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <!-- Sign Up Form Section -->
+            <form id="signupForm" class="form" onsubmit="return handleSignup(event)">
+                <h2>Register</h2>
+                <div class="input-box">
+                    <input type="text" id="signupFullName" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="tel" id="signupPhone" placeholder="Phone Number" required>
+                </div>
+                
+                <!-- Role Selector for Signup -->
+                <div class="role-selector" onchange="toggleSignupFields()">
+                    <label>
+                        <input type="radio" name="signupRole" value="student" checked>
+                        <span>Student</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="signupRole" value="coach">
+                        <span>Coach</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="signupRole" value="admin">
+                        <span>Admin</span>
+                    </label>
+                </div>
+
+                <!-- Additional fields for Coach/Student/Admin during Signup -->
+                <div id="additionalSignupFields" class="hidden-fields">
+                    <div class="input-box" id="signupDOBInputBox">
+                        <input type="date" id="signupDOB" title="Date of Birth" required>
+                    </div>
+                    <div class="input-box" id="signupExperienceInputBox">
+                        <input type="text" id="signupExperience" placeholder="Experience (e.g., 5 years coaching)" required>
+                    </div>
+                    <div class="input-box" id="signupStateInputBox">
+                        <!-- Select dropdown for states -->
+                        <select id="signupState" required>
+                            <option value="" disabled selected>Select State</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+  <footer class="main-footer">
+    <div class="social-links">
+      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com" target="_blank">X</a>
+      <a href="https://api.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Playground. All rights reserved.</p>
+  </footer>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="Playground.js"></script>
+  <!--linking login js sheet-->
+  <script src="login.js"></script>
+
+  </body>
+</html>
